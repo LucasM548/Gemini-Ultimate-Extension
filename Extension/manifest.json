@@ -2,15 +2,26 @@
   "manifest_version": 3,
   "name": "Gemini Ultimate",
   "version": "1.0",
-  "description": "Force le modèle (supporte plusieurs alias), remplit et envoie sur Gemini.",
+  "default_locale": "en",
+  "description": "__MSG_extDescription__",
   "permissions": [
     "storage"
   ],
   "host_permissions": [
     "https://gemini.google.com/*"
   ],
+  "icons": {
+    "16": "Logo.png",
+    "48": "Logo.png",
+    "128": "Logo.png"
+  },
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "Logo.png",
+      "48": "Logo.png",
+      "128": "Logo.png"
+    }
   },
   "content_scripts": [
     {

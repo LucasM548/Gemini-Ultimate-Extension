@@ -14,7 +14,7 @@ Une extension Chrome puissante (et un script Tampermonkey) pour automatiser et a
 2.  Ouvrez Google Chrome et allez sur `chrome://extensions`.
 3.  Activez le **Mode développeur** (en haut à droite).
 4.  Cliquez sur **Charger l'extension non empaquetée**.
-5.  Sélectionnez le dossier de ce projet.
+5.  Sélectionnez le dossier `Extension` situé dans ce projet.
 
 ## ⚡ Utilisation Rapide (Barre d'adresse)
 

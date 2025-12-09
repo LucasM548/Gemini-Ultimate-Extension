@@ -57,8 +57,26 @@ function updateUI() {
     els.delaySend.value = config.DELAY_BEFORE_SEND;
 }
 
+// Localize
+function localizeHtml() {
+    // Text content
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const msg = chrome.i18n.getMessage(key);
+        if (msg) el.textContent = msg;
+    });
+    // Placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        const msg = chrome.i18n.getMessage(key);
+        if (msg) el.placeholder = msg;
+    });
+}
+
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
+    localizeHtml(); // Run localization first
+    
     chrome.storage.sync.get(['config'], (result) => {
         if (result.config) config = result.config;
         updateUI();
@@ -84,22 +102,6 @@ function addAvoid() {
     }
 }
 
-// Reset
-document.getElementById('resetBtn').addEventListener('click', () => {
-    if (confirm('Voulez-vous vraiment remettre les paramètres par défaut ?')) {
-        // Deep copy to break reference
-        config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
-        updateUI();
-        
-        // Auto-save on reset? Or let user click save? 
-        // Better to save immediately for "Reset" action usually.
-        chrome.storage.sync.set({ config }, () => {
-            els.status.textContent = 'Paramètres réinitialisés !';
-            setTimeout(() => els.status.textContent = '', 2000);
-        });
-    }
-});
-
 // Click Listeners
 els.addTargetBtn.addEventListener('click', addTarget);
 els.addAvoidBtn.addEventListener('click', addAvoid);
@@ -119,10 +121,24 @@ els.saveBtn.addEventListener('click', () => {
     config.DELAY_BEFORE_SEND = parseInt(els.delaySend.value) || 50;
 
     chrome.storage.sync.set({ config }, () => {
-        els.status.textContent = 'Sauvegardé avec succès !';
-        els.status.style.color = '#188038';
+        els.status.textContent = chrome.i18n.getMessage('msgSaved');
+        els.status.style.color = '#8ab4f8';
         setTimeout(() => {
             els.status.textContent = '';
         }, 2000);
     });
+});
+
+// Reset
+document.getElementById('resetBtn').addEventListener('click', () => {
+    if (confirm(chrome.i18n.getMessage('confirmReset'))) {
+        // Deep copy to break reference
+        config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+        updateUI();
+        
+        chrome.storage.sync.set({ config }, () => {
+            els.status.textContent = chrome.i18n.getMessage('msgReset');
+            setTimeout(() => els.status.textContent = '', 2000);
+        });
+    }
 });

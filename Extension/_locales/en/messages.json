@@ -1,0 +1,44 @@
+{
+  "extDescription": {
+    "message": "Enforces model selection (aliases supported), auto-fills and sends on Gemini."
+  },
+  "targetModelsTitle": {
+    "message": "Target Models"
+  },
+  "targetPlaceh": {
+    "message": "Add model (e.g. Flash)"
+  },
+  "avoidModelsTitle": {
+    "message": "Models to Avoid"
+  },
+  "avoidPlaceh": {
+    "message": "Add term (e.g. Thinking)"
+  },
+  "speedSettingsTitle": {
+    "message": "Speed Settings (ms)"
+  },
+  "lblMenu": {
+    "message": "Menu"
+  },
+  "lblPage": {
+    "message": "Page"
+  },
+  "lblSend": {
+    "message": "Send"
+  },
+  "btnSave": {
+    "message": "Save Changes"
+  },
+  "btnReset": {
+    "message": "Reset to Default"
+  },
+  "msgSaved": {
+    "message": "Saved successfully!"
+  },
+  "msgReset": {
+    "message": "Settings reset!"
+  },
+  "confirmReset": {
+    "message": "Are you sure you want to reset to default settings?"
+  }
+}

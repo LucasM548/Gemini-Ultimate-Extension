@@ -1,0 +1,44 @@
+{
+  "extDescription": {
+    "message": "Force le modèle (supporte plusieurs alias), remplit et envoie sur Gemini."
+  },
+  "targetModelsTitle": {
+    "message": "Modèles Cibles"
+  },
+  "targetPlaceh": {
+    "message": "Ajouter un modèle (ex: Flash)"
+  },
+  "avoidModelsTitle": {
+    "message": "Modèles à Éviter"
+  },
+  "avoidPlaceh": {
+    "message": "Ajouter un terme (ex: Thinking)"
+  },
+  "speedSettingsTitle": {
+    "message": "Paramètres de Vitesse (ms)"
+  },
+  "lblMenu": {
+    "message": "Menu"
+  },
+  "lblPage": {
+    "message": "Page"
+  },
+  "lblSend": {
+    "message": "Envoi"
+  },
+  "btnSave": {
+    "message": "Sauvegarder les changements"
+  },
+  "btnReset": {
+    "message": "Réinitialiser par défaut"
+  },
+  "msgSaved": {
+    "message": "Sauvegardé avec succès !"
+  },
+  "msgReset": {
+    "message": "Paramètres réinitialisés !"
+  },
+  "confirmReset": {
+    "message": "Voulez-vous vraiment remettre les paramètres par défaut ?"
+  }
+}

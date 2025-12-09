@@ -11,48 +11,50 @@
 <body>
     <div class="container">
         <header>
-            <h1>Gemini Ultimate</h1>
+            <h1 data-i18n="extName">Gemini Ultimate</h1>
         </header>
 
         <div class="card">
-            <div class="section-title">Modèles Cibles</div>
+            <div class="section-title" data-i18n="targetModelsTitle">Modèles Cibles</div>
             <div class="input-group">
-                <input type="text" id="newTarget" placeholder="Ajouter un modèle (ex: Flash)">
+                <input type="text" id="newTarget" data-i18n-placeholder="targetPlaceh"
+                    placeholder="Ajouter un modèle (ex: Flash)">
                 <button id="addTargetBtn" class="icon-btn">+</button>
             </div>
             <div id="targetList" class="tag-list"></div>
         </div>
 
         <div class="card">
-            <div class="section-title">Modèles à Éviter</div>
+            <div class="section-title" data-i18n="avoidModelsTitle">Modèles à Éviter</div>
             <div class="input-group">
-                <input type="text" id="newAvoid" placeholder="Ajouter un terme (ex: Thinking)">
+                <input type="text" id="newAvoid" data-i18n-placeholder="avoidPlaceh"
+                    placeholder="Ajouter un terme (ex: Thinking)">
                 <button id="addAvoidBtn" class="icon-btn">+</button>
             </div>
             <div id="avoidList" class="tag-list"></div>
         </div>
 
         <div class="card">
-            <div class="section-title">Paramètres de Vitesse (ms)</div>
+            <div class="section-title" data-i18n="speedSettingsTitle">Paramètres de Vitesse (ms)</div>
             <div class="grid-3">
                 <div class="input-col">
-                    <label for="delayMenu">Menu</label>
+                    <label for="delayMenu" data-i18n="lblMenu">Menu</label>
                     <input type="number" id="delayMenu">
                 </div>
                 <div class="input-col">
-                    <label for="delayPage">Page</label>
+                    <label for="delayPage" data-i18n="lblPage">Page</label>
                     <input type="number" id="delayPage">
                 </div>
                 <div class="input-col">
-                    <label for="delaySend">Envoi</label>
+                    <label for="delaySend" data-i18n="lblSend">Envoi</label>
                     <input type="number" id="delaySend">
                 </div>
             </div>
         </div>
 
         <div class="actions">
-            <button id="saveBtn" class="primary-btn">Sauvegarder les changements</button>
-            <button id="resetBtn" class="secondary-btn">Réinitialiser par défaut</button>
+            <button id="saveBtn" class="primary-btn" data-i18n="btnSave">Sauvegarder les changements</button>
+            <button id="resetBtn" class="secondary-btn" data-i18n="btnReset">Réinitialiser par défaut</button>
         </div>
         <div id="status"></div>
     </div>
