@@ -1,0 +1,233 @@
+:root {
+    /* Gemini Dark Theme Colors */
+    --bg: #131314;
+    /* Deep dark background */
+    --surface: #1e1f20;
+    /* Card background */
+    --border: #3c4043;
+    /* Border color */
+    --text: #e3e3e3;
+    /* Main text */
+    --text-secondary: #a8c7fa;
+    /* Highlight/Action text color */
+
+    --primary: #8ab4f8;
+    /* Gemini Blue */
+    --primary-hover: #aecbfa;
+    --primary-text: #000;
+    /* Text on primary buttons */
+
+    --shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Google Sans', 'Segoe UI', Roboto, sans-serif;
+    width: 320px;
+    /* Slightly narrower for better vertical flow */
+    margin: 0;
+    padding: 20px;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+    background: linear-gradient(90deg, #8ab4f8, #c58af9);
+    /* Cooler gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    font-weight: 500;
+}
+
+.card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 16px;
+    border: none;
+    /* Removed border for smoother look */
+    box-shadow: var(--shadow);
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* Dynamic Input Group */
+.input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+input[type="text"],
+input[type="number"] {
+    flex: 1;
+    padding: 10px 12px;
+    background-color: #2d2e30;
+    color: var(--text);
+    border: 1px solid transparent;
+    /* No border by default */
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+input:focus {
+    outline: none;
+    background-color: #35363a;
+    border-color: var(--primary);
+}
+
+.icon-btn {
+    width: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: #3c4043;
+    color: var(--primary);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.icon-btn:hover {
+    background: #4a4d51;
+}
+
+/* Tag List */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 28px;
+}
+
+.tag {
+    background: #3c4043;
+    border: none;
+    border-radius: 18px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tag .remove {
+    cursor: pointer;
+    color: #9aa0a6;
+    font-weight: bold;
+    font-size: 16px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.tag .remove:hover {
+    background: #5f6368;
+    color: #e3e3e3;
+}
+
+/* Vertical Grid Layout (Fix) */
+.grid-3 {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input-col {
+    display: flex;
+    flex-direction: row;
+    /* Horizontal label + input */
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.input-col label {
+    font-size: 14px;
+    color: var(--text);
+    flex: 1;
+}
+
+.input-col input {
+    width: 80px;
+    /* Fixed width for inputs */
+    flex: none;
+    text-align: center;
+}
+
+/* Main Button */
+.primary-btn {
+    background: var(--primary);
+    color: var(--primary-text);
+    border: none;
+    padding: 14px;
+    border-radius: 24px;
+    /* Pill shape */
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    transition: background-color 0.2s;
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 24px;
+    font-size: 13px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s;
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    border-color: var(--text-secondary);
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+#status {
+    text-align: center;
+    height: 16px;
+    font-size: 12px;
+    margin-top: 12px;
+    font-weight: 500;
+    color: var(--primary);
+}

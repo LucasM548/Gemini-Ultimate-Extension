@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Ultimate Config</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Gemini Ultimate</h1>
+        </header>
+
+        <div class="card">
+            <div class="section-title">Modèles Cibles</div>
+            <div class="input-group">
+                <input type="text" id="newTarget" placeholder="Ajouter un modèle (ex: Flash)">
+                <button id="addTargetBtn" class="icon-btn">+</button>
+            </div>
+            <div id="targetList" class="tag-list"></div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">Modèles à Éviter</div>
+            <div class="input-group">
+                <input type="text" id="newAvoid" placeholder="Ajouter un terme (ex: Thinking)">
+                <button id="addAvoidBtn" class="icon-btn">+</button>
+            </div>
+            <div id="avoidList" class="tag-list"></div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">Paramètres de Vitesse (ms)</div>
+            <div class="grid-3">
+                <div class="input-col">
+                    <label for="delayMenu">Menu</label>
+                    <input type="number" id="delayMenu">
+                </div>
+                <div class="input-col">
+                    <label for="delayPage">Page</label>
+                    <input type="number" id="delayPage">
+                </div>
+                <div class="input-col">
+                    <label for="delaySend">Envoi</label>
+                    <input type="number" id="delaySend">
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button id="saveBtn" class="primary-btn">Sauvegarder les changements</button>
+            <button id="resetBtn" class="secondary-btn">Réinitialiser par défaut</button>
+        </div>
+        <div id="status"></div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>

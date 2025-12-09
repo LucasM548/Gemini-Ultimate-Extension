@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Ultimate",
+  "version": "1.0",
+  "description": "Force le modèle (supporte plusieurs alias), remplit et envoie sur Gemini.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://gemini.google.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
