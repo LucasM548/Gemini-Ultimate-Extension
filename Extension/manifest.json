@@ -4,23 +4,22 @@
   "version": "1.0",
   "default_locale": "en",
   "description": "__MSG_extDescription__",
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
   "host_permissions": [
     "https://gemini.google.com/*"
   ],
   "icons": {
-    "16": "Logo.png",
-    "48": "Logo.png",
-    "128": "Logo.png"
+    "16": "Icons/Logo.png",
+    "48": "Icons/Logo.png",
+    "128": "Icons/Logo.png"
   },
   "action": {
+    "default_title": "Gemini Ultimate",
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "Logo.png",
-      "48": "Logo.png",
-      "128": "Logo.png"
+      "16": "Icons/Logo.png",
+      "48": "Icons/Logo.png",
+      "128": "Icons/Logo.png"
     }
   },
   "content_scripts": [
