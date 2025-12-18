@@ -1,6 +1,6 @@
 {
   "extDescription": {
-    "message": "Enforces model selection (aliases supported), auto-fills and sends on Gemini."
+    "message": "Uses Gemini's ?q= URL parameter to automatically send your prompts with the fast model (Flash)."
   },
   "targetModelsTitle": {
     "message": "Target Models"

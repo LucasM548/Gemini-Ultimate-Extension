@@ -1,10 +1,4 @@
-const DEFAULT_CONFIG = {
-    TARGET_MODELS: ['Flash', 'Rapid', 'Fast'],
-    MODELS_TO_AVOID: ['Thinking', 'Raisonnement'],
-    DELAY_MENU_OPEN: 50,
-    DELAY_PAGE_LOAD: 50,
-    DELAY_BEFORE_SEND: 50
-};
+// DEFAULT_CONFIG is loaded from config.js
 
 // State
 let config = { ...DEFAULT_CONFIG };

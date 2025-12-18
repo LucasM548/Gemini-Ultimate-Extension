@@ -1,6 +1,6 @@
 {
   "extDescription": {
-    "message": "Force le modèle (supporte plusieurs alias), remplit et envoie sur Gemini."
+    "message": "Exploite le paramètre ?q= de Gemini pour envoyer automatiquement vos prompts avec le modèle rapide (Flash)."
   },
   "targetModelsTitle": {
     "message": "Modèles Cibles"
