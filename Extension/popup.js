@@ -43,6 +43,8 @@ function showSaveIndicator() {
 // Render Functions
 function renderTags(container, list, onRemove) {
     container.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+
     list.forEach((item, index) => {
         const tag = document.createElement('div');
         tag.className = 'tag';
@@ -57,8 +59,10 @@ function renderTags(container, list, onRemove) {
         tag.querySelector('.remove').addEventListener('click', () => {
             onRemove(index);
         });
-        container.appendChild(tag);
+        fragment.appendChild(tag);
     });
+
+    container.appendChild(fragment);
 }
 
 function updateUI() {

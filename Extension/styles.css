@@ -1,17 +1,28 @@
 :root {
-    /* Gemini Dark Theme - Clean & Minimal */
-    --bg: #131314;
-    --surface: #1e1f20;
-    --surface-hover: #282a2c;
-    --border: #3c4043;
-    --text: #e3e3e3;
-    --text-secondary: #9aa0a6;
-    --primary: #8ab4f8;
-    --primary-hover: #aecbfa;
-    --success: #81c995;
+    /* Gemini / Material Design 3 Dark Theme */
+    --md-sys-color-background: #131314;
+    --md-sys-color-on-background: #E3E3E3;
+    --md-sys-color-surface: #1E1F20;
+    --md-sys-color-surface-container: #28292a;
+    --md-sys-color-on-surface: #E3E3E3;
+    --md-sys-color-on-surface-variant: #C4C7C5;
+    --md-sys-color-primary: #A8C7FA;
+    --md-sys-color-on-primary: #062E6F;
+    --md-sys-color-primary-container: #0842A0;
+    --md-sys-color-on-primary-container: #D3E3FD;
+    --md-sys-color-secondary-container: #004A77;
+    --md-sys-color-on-secondary-container: #CZE8FF;
+    --md-sys-color-outline: #444746;
+    --md-sys-color-outline-variant: #444746;
 
-    --radius: 8px;
+    --gemini-gradient: linear-gradient(90deg, #4b90ff, #ff5546);
+
+    --radius-full: 9999px;
     --radius-lg: 24px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+
+    --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
 }
 
 * {
@@ -21,18 +32,19 @@
 }
 
 body {
-    font-family: 'Google Sans', 'Segoe UI', Roboto, Arial, sans-serif;
-    width: 320px;
-    padding: 16px;
-    background: var(--bg);
-    color: var(--text);
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+    width: 360px;
+    /* Slightly wider for better breathing room */
+    padding: 20px;
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
     -webkit-font-smoothing: antialiased;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
 }
 
 /* Header */
@@ -40,232 +52,267 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 4px;
+    padding-bottom: 12px;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .logo-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
 }
 
-header h1 {
-    font-size: 16px;
+h1 {
+    font-size: 20px;
     font-weight: 500;
-    color: var(--text);
+    background: linear-gradient(90deg, #fff, #a8c7fa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
 }
 
 /* Save Indicator */
 .save-indicator {
     display: flex;
     align-items: center;
-    gap: 4px;
-    padding: 4px 10px;
-    background: rgba(129, 201, 149, 0.15);
-    border-radius: 16px;
-    color: var(--success);
+    gap: 6px;
+    padding: 6px 12px;
+    background-color: rgba(168, 199, 250, 0.1);
+    border-radius: var(--radius-full);
+    color: var(--md-sys-color-primary);
     font-size: 11px;
     font-weight: 500;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transform: translateY(-5px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .save-indicator.visible {
     opacity: 1;
+    transform: translateY(0);
 }
 
-.save-indicator .check-icon {
-    width: 12px;
-    height: 12px;
+.save-indicator svg {
+    width: 14px;
+    height: 14px;
 }
 
 /* Cards */
 .card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    padding: 12px;
+    background-color: var(--md-sys-color-surface);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.card:hover {
+    border-color: var(--md-sys-color-outline);
 }
 
 /* Section Header */
 .section-header {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
+    gap: 10px;
+    margin-bottom: 16px;
 }
 
 .section-icon {
-    width: 16px;
-    height: 16px;
-    color: var(--text-secondary);
+    width: 20px;
+    height: 20px;
+    color: var(--md-sys-color-primary);
 }
 
 .section-title {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
-    color: var(--text-secondary);
+    color: var(--md-sys-color-on-surface);
+    letter-spacing: 0.1px;
 }
 
-/* Input Group */
+/* Inputs */
 .input-group {
     display: flex;
+    align-items: center;
     gap: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    background-color: var(--md-sys-color-surface-container);
+    border-radius: var(--radius-full);
+    padding: 4px 4px 4px 16px;
+    border: 1px solid transparent;
+    /* Placeholder for focus state */
+    transition: all 0.2s;
+}
+
+.input-group:focus-within {
+    background-color: var(--md-sys-color-background);
+    border-color: var(--md-sys-color-primary);
 }
 
 input[type="text"],
 input[type="number"] {
     flex: 1;
-    padding: 10px 12px;
-    background: var(--bg);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    background: transparent;
+    border: none;
+    color: var(--md-sys-color-on-surface);
     font-size: 14px;
     font-family: inherit;
+    outline: none;
+    padding: 8px 0;
 }
 
 input::placeholder {
-    color: var(--text-secondary);
+    color: var(--md-sys-color-on-surface-variant);
 }
 
-input:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-
+/* Icon Buttons */
 .icon-btn {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--surface-hover);
-    color: var(--primary);
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
     border: none;
-    border-radius: var(--radius);
+    border-radius: 50%;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: transform 0.1s, background-color 0.2s;
 }
 
 .icon-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
 }
 
 .icon-btn:hover {
-    background: var(--border);
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
 }
 
-/* Tag List */
+.icon-btn:active {
+    transform: scale(0.95);
+}
+
+/* Tag List (Chips) */
 .tag-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    min-height: 28px;
+    gap: 8px;
+    min-height: 32px;
 }
 
 .tag {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 10px;
-    background: var(--surface-hover);
-    border-radius: 16px;
+    gap: 8px;
+    padding: 6px 12px;
+    background-color: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline);
+    border-radius: 8px;
+    /* Slightly squarish chips */
     font-size: 13px;
-    color: var(--text);
+    color: var(--md-sys-color-on-surface);
+    transition: background-color 0.2s;
+}
+
+.tag:hover {
+    background-color: var(--md-sys-color-surface);
 }
 
 .tag .remove {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
     cursor: pointer;
-    color: var(--text-secondary);
+    color: var(--md-sys-color-on-surface-variant);
     transition: color 0.15s;
-}
-
-.tag .remove svg {
-    width: 10px;
-    height: 10px;
+    border-radius: 50%;
+    padding: 2px;
 }
 
 .tag .remove:hover {
-    color: var(--text);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--md-sys-color-on-surface);
 }
 
-/* Grid Layout for Delays */
+.tag .remove svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Speed Settings Grid */
 .grid-3 {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 }
 
 .input-col {
     display: flex;
+    flex-direction: column;
+    gap: 6px;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
 }
 
 .input-col label {
-    font-size: 14px;
-    color: var(--text);
+    font-size: 12px;
+    color: var(--md-sys-color-on-surface-variant);
+    font-weight: 500;
 }
 
 .input-col input {
-    width: 80px;
+    width: 100%;
     text-align: center;
-    padding: 8px 10px;
+    background-color: var(--md-sys-color-surface-container);
+    border-radius: var(--radius-md);
+    padding: 10px;
+    font-weight: 500;
+    border: 1px solid transparent;
 }
 
-/* Buttons */
+.input-col input:focus {
+    border-color: var(--md-sys-color-primary);
+    background-color: var(--md-sys-color-background);
+}
+
+/* Reset Button */
 .actions {
-    margin-top: 4px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
 }
 
 .secondary-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    width: 100%;
-    padding: 10px 14px;
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: var(--md-sys-color-primary);
+    border: 1px solid var(--md-sys-color-outline);
+    border-radius: var(--radius-full);
     font-size: 13px;
-    font-family: inherit;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.15s;
-}
-
-.secondary-btn .btn-icon {
-    width: 14px;
-    height: 14px;
+    transition: all 0.2s;
 }
 
 .secondary-btn:hover {
-    background: var(--surface);
-    color: var(--text);
+    background-color: rgba(168, 199, 250, 0.08);
+    /* primary at low opacity */
+    border-color: var(--md-sys-color-primary);
 }
 
-/* Focus states */
-button:focus-visible,
-input:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
+.btn-icon {
+    width: 16px;
+    height: 16px;
 }
