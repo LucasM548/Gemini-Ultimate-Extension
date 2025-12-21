@@ -2,6 +2,7 @@
 
 // State
 let config = { ...DEFAULT_CONFIG };
+let saveTimeout;
 
 // DOM Elements
 const els = {
@@ -14,9 +15,30 @@ const els = {
     delayMenu: document.getElementById('delayMenu'),
     delayPage: document.getElementById('delayPage'),
     delaySend: document.getElementById('delaySend'),
-    saveBtn: document.getElementById('saveBtn'),
-    status: document.getElementById('status')
+    saveIndicator: document.getElementById('saveIndicator')
 };
+
+// Auto-save with debounce
+function saveConfig() {
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => {
+        config.DELAY_MENU_OPEN = parseInt(els.delayMenu.value) || 50;
+        config.DELAY_PAGE_LOAD = parseInt(els.delayPage.value) || 50;
+        config.DELAY_BEFORE_SEND = parseInt(els.delaySend.value) || 50;
+
+        chrome.storage.sync.set({ config }, () => {
+            showSaveIndicator();
+        });
+    }, 300);
+}
+
+// Show save indicator animation
+function showSaveIndicator() {
+    els.saveIndicator.classList.add('visible');
+    setTimeout(() => {
+        els.saveIndicator.classList.remove('visible');
+    }, 1500);
+}
 
 // Render Functions
 function renderTags(container, list, onRemove) {
@@ -26,7 +48,11 @@ function renderTags(container, list, onRemove) {
         tag.className = 'tag';
         tag.innerHTML = `
             <span>${item}</span>
-            <span class="remove" title="Supprimer">×</span>
+            <span class="remove" title="Remove">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </span>
         `;
         tag.querySelector('.remove').addEventListener('click', () => {
             onRemove(index);
@@ -39,11 +65,13 @@ function updateUI() {
     renderTags(els.targetList, config.TARGET_MODELS, (index) => {
         config.TARGET_MODELS.splice(index, 1);
         updateUI();
+        saveConfig();
     });
-    
+
     renderTags(els.avoidList, config.MODELS_TO_AVOID, (index) => {
         config.MODELS_TO_AVOID.splice(index, 1);
         updateUI();
+        saveConfig();
     });
 
     els.delayMenu.value = config.DELAY_MENU_OPEN;
@@ -69,8 +97,8 @@ function localizeHtml() {
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-    localizeHtml(); // Run localization first
-    
+    localizeHtml();
+
     chrome.storage.sync.get(['config'], (result) => {
         if (result.config) config = result.config;
         updateUI();
@@ -84,6 +112,7 @@ function addTarget() {
         config.TARGET_MODELS.push(val);
         els.newTarget.value = '';
         updateUI();
+        saveConfig();
     }
 }
 
@@ -93,6 +122,7 @@ function addAvoid() {
         config.MODELS_TO_AVOID.push(val);
         els.newAvoid.value = '';
         updateUI();
+        saveConfig();
     }
 }
 
@@ -108,31 +138,19 @@ els.newAvoid.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addAvoid();
 });
 
-// Save
-els.saveBtn.addEventListener('click', () => {
-    config.DELAY_MENU_OPEN = parseInt(els.delayMenu.value) || 50;
-    config.DELAY_PAGE_LOAD = parseInt(els.delayPage.value) || 50;
-    config.DELAY_BEFORE_SEND = parseInt(els.delaySend.value) || 50;
-
-    chrome.storage.sync.set({ config }, () => {
-        els.status.textContent = chrome.i18n.getMessage('msgSaved');
-        els.status.style.color = '#8ab4f8';
-        setTimeout(() => {
-            els.status.textContent = '';
-        }, 2000);
-    });
-});
+// Auto-save on delay input changes
+els.delayMenu.addEventListener('input', saveConfig);
+els.delayPage.addEventListener('input', saveConfig);
+els.delaySend.addEventListener('input', saveConfig);
 
 // Reset
 document.getElementById('resetBtn').addEventListener('click', () => {
     if (confirm(chrome.i18n.getMessage('confirmReset'))) {
-        // Deep copy to break reference
         config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
         updateUI();
-        
+
         chrome.storage.sync.set({ config }, () => {
-            els.status.textContent = chrome.i18n.getMessage('msgReset');
-            setTimeout(() => els.status.textContent = '', 2000);
+            showSaveIndicator();
         });
     }
 });
