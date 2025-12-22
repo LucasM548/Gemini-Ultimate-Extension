@@ -22,6 +22,12 @@ Cela vous permet d'obtenir des réponses instantanées avec le modèle **fast** 
 
 ## 🚀 Installation (Extension Chrome)
 
+C'est la méthode la plus simple et recommandée. Cliquez simplement sur le lien ci-dessous pour l'ajouter à Chrome :
+
+[**Télécharger sur le Chrome Web Store**](https://chromewebstore.google.com/detail/gemini-ultimate/jhpkldiddcobahfolmjiobbacjbgdegl?authuser=0&hl=en-GB)
+
+### Installation Manuelle (Pour les développeurs)
+
 1.  Clonez ce dépôt ou téléchargez les fichiers.
 2.  Ouvrez Google Chrome et allez sur `chrome://extensions`.
 3.  Activez le **Mode développeur** (en haut à droite).
