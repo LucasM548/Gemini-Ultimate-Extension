@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Gemini Ultimate",
-  "version": "1.2",
+  "version": "1.3",
   "default_locale": "en",
   "description": "__MSG_extDescription__",
   "permissions": [
@@ -11,17 +11,17 @@
     "https://gemini.google.com/*"
   ],
   "icons": {
-    "16": "Icons/Logo.png",
-    "48": "Icons/Logo.png",
-    "128": "Icons/Logo.png"
+    "16": "Icons/icon16.png",
+    "48": "Icons/icon48.png",
+    "128": "Icons/icon128.png"
   },
   "action": {
     "default_title": "Gemini Ultimate",
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "Icons/Logo.png",
-      "48": "Icons/Logo.png",
-      "128": "Icons/Logo.png"
+      "16": "Icons/icon16.png",
+      "48": "Icons/icon48.png",
+      "128": "Icons/icon128.png"
     }
   },
   "content_scripts": [
