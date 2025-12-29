@@ -229,18 +229,32 @@ async function runScript() {
     document.execCommand('selectAll', false, null);
     document.execCommand('insertText', false, query);
 
+    // Dispatch events to ensure UI updates
+    editor.dispatchEvent(new Event('input', { bubbles: true }));
+    editor.dispatchEvent(new Event('change', { bubbles: true }));
+
     // Clean URL
     window.history.replaceState({}, document.title, window.location.pathname);
 
-    // Send
+    // Send using Enter key
     setTimeout(() => {
-        const sendButton = document.querySelector('button[aria-label="Envoyer"], button[aria-label="Send"], button[aria-label*="message"]');
-        if (sendButton && !sendButton.disabled) {
-            sendButton.click();
-        } else {
-            editor.dispatchEvent(new Event('input', { bubbles: true }));
-            setTimeout(() => sendButton?.click(), 200);
-        }
+        const enterEvent = new KeyboardEvent('keydown', {
+            bubbles: true,
+            cancelable: true,
+            key: 'Enter',
+            code: 'Enter',
+            keyCode: 13
+        });
+        editor.dispatchEvent(enterEvent);
+        
+        // Fallback: If Enter didn't work (e.g. valid text check failed), try to find button as backup
+        setTimeout(() => {
+            const sendButton = document.querySelector('button[aria-label="Envoyer"], button[aria-label="Send"], button[aria-label*="message"], button[data-test-id="send-button"]');
+            if (sendButton && !sendButton.disabled && sendButton.offsetParent !== null) {
+                sendButton.click();
+            }
+        }, 500);
+
     }, config.DELAY_BEFORE_SEND);
 }
 
