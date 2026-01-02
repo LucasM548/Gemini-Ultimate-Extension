@@ -4,7 +4,7 @@ Une extension Chrome puissante (et un script Tampermonkey) pour automatiser et a
 
 ## 🌟 Fonctionnalités
 
-- **Sélection automatique du modèle** : Force l'utilisation de vos modèles préférés (ex: "Flash", "Rapid") et évite ceux que vous n'aimez pas (ex: "Thinking").
+- **Sélection du Modèle Préféré** : Sélectionne vos modèles préférés (ex: "Flash", "Rapid") s'ils ne sont pas actifs par défaut.
 - **Envoi rapide** : Remplit et envoie automatiquement votre prompt via une URL paramétrée.
 - **Interface de Configuration** : Ajustez facilement vos modèles cibles et les délais d'exécution via un popup moderne (Thème sombre Gemini).
 
@@ -15,7 +15,7 @@ Google Gemini supporte nativement un **paramètre de requête dans l'URL** : `ht
 Le `%s` est remplacé par votre texte, ce qui permet de pré-remplir automatiquement le champ de saisie. Cette extension exploite cette fonctionnalité en :
 
 1. **Détectant le paramètre `?q=`** dans l'URL
-2. **Changeant automatiquement le modèle** vers une version rapide (Flash/Rapid) si un modèle lent (Thinking) est actif
+2. **Sélectionnant votre modèle préféré** (Flash/Rapid) si un autre modèle est actif
 3. **Envoyant automatiquement le prompt** sans intervention manuelle
 
 Cela vous permet d'obtenir des réponses instantanées avec le modèle **fast** de Google, directement depuis votre barre d'adresse !
