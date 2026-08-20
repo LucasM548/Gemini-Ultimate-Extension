@@ -5,96 +5,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gemini Ultimate Config</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div class="container">
+        <!-- ─── Header ──────────────────────────────────────────── -->
         <header>
             <div class="logo-container">
-                <img src="Icons/icon128.png" alt="Logo" class="logo-icon">
-                <h1 data-i18n="extName">Gemini Ultimate</h1>
+                <div class="logo-glow">
+                    <img src="Icons/icon128.png" alt="Logo" class="logo-icon">
+                </div>
+                <div class="header-text">
+                    <h1 data-i18n="extName">Gemini Ultimate</h1>
+                    <span class="version">v2.1</span>
+                </div>
             </div>
             <div id="saveIndicator" class="save-indicator">
                 <svg class="check-icon" viewBox="0 0 24 24" fill="none">
-                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
                 <span data-i18n="autoSaved">Saved</span>
             </div>
         </header>
 
-        <div class="card">
+        <!-- ─── Target Models ───────────────────────────────────── -->
+        <div class="card card-target">
             <div class="section-header">
-                <svg class="section-icon" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" />
-                </svg>
-                <span class="section-title" data-i18n="targetModelsTitle">Target Models</span>
+                <div class="section-icon-wrap icon-target">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M22 4L12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="section-text">
+                    <span class="section-title" data-i18n="targetModelsTitle">Target Models</span>
+                    <span class="section-desc">Preferred models to switch to</span>
+                </div>
             </div>
             <div class="input-group">
                 <input type="text" id="newTarget" data-i18n-placeholder="targetPlaceh"
                     placeholder="Add a model (e.g., Flash)">
                 <button id="addTargetBtn" class="icon-btn" title="Add">
                     <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
                     </svg>
                 </button>
             </div>
             <div id="targetList" class="tag-list"></div>
         </div>
 
-        <div class="card">
+        <!-- ─── Models to Avoid ─────────────────────────────────── -->
+        <div class="card card-avoid">
             <div class="section-header">
-                <svg class="section-icon" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
-                    <path d="M15 9L9 15M9 9L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-                <span class="section-title" data-i18n="avoidModelsTitle">Models to Avoid</span>
+                <div class="section-icon-wrap icon-avoid">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                        <path d="M4.93 4.93l14.14 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="section-text">
+                    <span class="section-title" data-i18n="avoidModelsTitle">Models to Avoid</span>
+                    <span class="section-desc">Keywords that trigger a model switch</span>
+                </div>
             </div>
             <div class="input-group">
                 <input type="text" id="newAvoid" data-i18n-placeholder="avoidPlaceh"
                     placeholder="Add a term (e.g., Thinking)">
                 <button id="addAvoidBtn" class="icon-btn" title="Add">
                     <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
                     </svg>
                 </button>
             </div>
             <div id="avoidList" class="tag-list"></div>
         </div>
 
+        <!-- ─── Speed Settings ──────────────────────────────────── -->
         <div class="card">
             <div class="section-header">
-                <svg class="section-icon" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
-                    <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg>
-                <span class="section-title" data-i18n="speedSettingsTitle">Speed Settings (ms)</span>
+                <div class="section-icon-wrap icon-speed">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="section-text">
+                    <span class="section-title" data-i18n="speedSettingsTitle">Speed Settings</span>
+                    <span class="section-desc">Delays in milliseconds</span>
+                </div>
             </div>
             <div class="grid-3">
                 <div class="input-col">
                     <label for="delayMenu" data-i18n="lblMenu">Menu</label>
                     <input type="number" id="delayMenu">
+                    <span class="input-unit">ms</span>
                 </div>
                 <div class="input-col">
                     <label for="delayPage" data-i18n="lblPage">Page</label>
                     <input type="number" id="delayPage">
+                    <span class="input-unit">ms</span>
                 </div>
                 <div class="input-col">
                     <label for="delaySend" data-i18n="lblSend">Send</label>
                     <input type="number" id="delaySend">
+                    <span class="input-unit">ms</span>
                 </div>
             </div>
         </div>
 
-        <div class="card">
+        <!-- ─── Debug Toggle ────────────────────────────────────── -->
+        <div class="card card-debug">
             <div class="toggle-row">
                 <div class="toggle-label">
-                    <svg class="section-icon" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span data-i18n="debugLogsTitle">Debug Logs</span>
+                    <div class="section-icon-wrap icon-debug">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 22c1.1 0 2-.9 2-2h-4a2 2 0 0 0 2 2zM20 8c0-3.07-1.63-5.64-4.5-6.32V1.5a1.5 1.5 0 0 0-3 0v.18C9.64 2.36 8 4.92 8 8v5l-2 2v1h16v-1l-2-2V8z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="toggle-text">
+                        <span class="toggle-title" data-i18n="debugLogsTitle">Debug Logs</span>
+                        <span class="toggle-desc">Show detailed logs in browser console</span>
+                    </div>
                 </div>
                 <label class="toggle-switch">
                     <input type="checkbox" id="debugLogs">
@@ -103,6 +138,7 @@
             </div>
         </div>
 
+        <!-- ─── Footer ──────────────────────────────────────────── -->
         <div class="actions">
             <button id="resetBtn" class="secondary-btn" data-i18n="btnReset">
                 <svg viewBox="0 0 24 24" fill="none" class="btn-icon">
