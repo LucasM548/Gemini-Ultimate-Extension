@@ -15,6 +15,7 @@ const els = {
     delayMenu: document.getElementById('delayMenu'),
     delayPage: document.getElementById('delayPage'),
     delaySend: document.getElementById('delaySend'),
+    debugLogs: document.getElementById('debugLogs'),
     saveIndicator: document.getElementById('saveIndicator')
 };
 
@@ -25,6 +26,7 @@ function saveConfig() {
         config.DELAY_MENU_OPEN = parseInt(els.delayMenu.value) || 50;
         config.DELAY_PAGE_LOAD = parseInt(els.delayPage.value) || 50;
         config.DELAY_BEFORE_SEND = parseInt(els.delaySend.value) || 50;
+        config.DEBUG_LOGS = els.debugLogs.checked;
 
         chrome.storage.sync.set({ config }, () => {
             showSaveIndicator();
@@ -81,6 +83,7 @@ function updateUI() {
     els.delayMenu.value = config.DELAY_MENU_OPEN;
     els.delayPage.value = config.DELAY_PAGE_LOAD;
     els.delaySend.value = config.DELAY_BEFORE_SEND;
+    els.debugLogs.checked = config.DEBUG_LOGS === true;
 }
 
 // Localize
@@ -146,6 +149,7 @@ els.newAvoid.addEventListener('keypress', (e) => {
 els.delayMenu.addEventListener('input', saveConfig);
 els.delayPage.addEventListener('input', saveConfig);
 els.delaySend.addEventListener('input', saveConfig);
+els.debugLogs.addEventListener('change', saveConfig);
 
 // Reset
 document.getElementById('resetBtn').addEventListener('click', () => {
